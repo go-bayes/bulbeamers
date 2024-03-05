@@ -10,7 +10,7 @@ format:
     aspectratio: 169
     theme: CambridgeUS
     colortheme: orchid
-    incremental: true  
+    incremental: false  
     header-includes:
       - \input{/Users/joseph/GIT/latex/latex-for-quarto.tex}
 execute:
@@ -289,7 +289,7 @@ $$\commoncausesolvedA$$
 
 ::::
 
-# New Zealand Attitudes and Values Study
+# New Zealand Attitudes and Values Study {.incremental}
 
 ## The New Zealand Attitudes and Values Study {.build}
 
@@ -312,7 +312,9 @@ ___
 ![NZAVS Daily Responses](timeline_histgram_2009_2024.png)
 
 
-## Big Events 
+___
+
+\LARGE \centering BIG EVENTS
 
 ___
 
@@ -321,9 +323,7 @@ ___
 ___
 
 
-
-
-## Gradual Events 
+\LARGE \centering  Gradual Events 
 
 
 ## Religious Service Attendence 
@@ -340,12 +340,14 @@ ___
 
 - Chris G. Sibley (NZAVS lead Investigator)
 - TRT Grant 0418
-- Max Planck Institude for Evolutionary Anthropology
+- Max Planck Institute for Evolutionary Anthropology
 - Victoria University
 - University of Canterbury
 - 72,290 NZAVS participants
 
-# Extra Slides
+___
+
+\LARGE \centering Extra Slides
 
 ## Longitudinal Data Bring Their Own Problems 
 
