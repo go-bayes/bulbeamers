@@ -1,7 +1,8 @@
 ---
-title: "Causal Inference in Three-Wave Panel Designs"
+title: Causal Inference in Three-Wave Panel Designs
+subtitle: with illustrations from the New Zealand Attitudes and Values Study 
 author: Joseph A. Bulbulia
-institute: Joseph.Bulbulia@vuw.ac.nz // Victoria University
+institute: Joseph.Bulbulia@vuw.ac.nz (Victoria University)
 fontfamily: libertinus
 bibliography: /Users/joseph/GIT/templates/bib/references.bib
 format: 
@@ -39,10 +40,7 @@ loadfonts(device = "all")
 ```
 
 
-#  The Fundamental Problem of Causal Inference
-
-
-## Causality Requires a Contrast of Exposures
+##  The Fundamental Problem of Causal Inference: We Require a Counterfactual Contrast
 
 $$Y_{\text{you}}(1) - Y_{\text{you}}(0)$$  
 
@@ -91,40 +89,12 @@ $$
 0 < Pr(A = a | L = l) < 1
 $$
 
-# Causal Diagrams & Structures of Confounding Bias
 
+## The Common Worry: Confounding by Common Cause
 
-___
+$$\commoncauseA$$
 
-\begin{adjustbox}{height=0.5\textheight, keepaspectratio}
-$$
-\footnotesize \terminologydirectedgraph
-$$
-\end{adjustbox}
-
-
-## Counfounding 
-
-<!-- ### Common Cause -->
-
-
-<!-- :::: {.columns} -->
-
-<!-- ::: {.column width="50%"} -->
-<!-- $$\commoncauseA$$ -->
-<!-- ::: -->
-
-
-<!-- ::: {.column width="50%"} -->
-<!-- $$~$$ -->
-<!-- ::: -->
-
-
-
-<!-- :::: -->
-
-
-## Reverse Causation
+## However, There Are Other Worries: Reverse Causation
 
 
 
@@ -132,55 +102,36 @@ $$\ytoa$$
 
 
 
-## Mediator Bias
+## Another Worry is Mediator Bias
 
 
 $$\mediatorA$$
 
-## Collider Bias
+## Another Worry is Collider Bias
 
 
 $$\colliderALONG$$
 
 
 
-## Collider Bias Proxy
+## Another Worry: Collider Bias Proxy
 
 
 $$\descendantBBLONG$$
-
-
-
-
-
 
 ## Post Exposure Collider Bias
 
 $$\mediatorcollider$$
 
 
-## Unmeasured Common Cause
+## Another Worry: Unmeasured Common Cause
 
 
 $$\downstream$$
 
 
 
-<!-- ### Common Cause: Longitudinal Solution  -->
 
-
-<!-- :::: {.columns} -->
-
-<!-- ::: {.column width="50%"} -->
-<!-- $$\commoncauseA$$ -->
-<!-- ::: -->
-
-
-<!-- ::: {.column width="50%"} -->
-<!-- $$\commoncausesolvedA$$ -->
-<!-- ::: -->
-
-<!-- :::: -->
 
 ## Reverse Causation Solution: Longitudional Hygiene
 
@@ -233,10 +184,8 @@ $$\commoncausesolvedA$$
 
 ::::
 
-## More Confounding Solutions: Longitudinal Hygiene 
 
-
-## Collider Bias Proxy Solution: Longitudional Hygiene
+## Collider Bias Proxy **Solution**: Longitudional Hygiene
 
 
 :::: {.columns}
@@ -289,13 +238,13 @@ $$\commoncausesolvedA$$
 
 ::::
 
-# New Zealand Attitudes and Values Study {.incremental}
+# New Zealand Attitudes and Values Study
 
-## The New Zealand Attitudes and Values Study {.build}
+## The New Zealand Attitudes and Values Study
 
   - Planned 20-year longitudinal study, currently in its 14$^{th}$ year.
   
-  - Sample frame drawn randomly from NZ Electoral Roll.
+  - Sample frame is drawn randomly from NZ Electoral Roll.
 
   - Postal questionnaire (coverage; retention ~ 80%)
     
@@ -305,8 +254,6 @@ $$\commoncausesolvedA$$
     
   - Current sample contains > 72,290,000 unique people, and ~ 38,000 in the longitudinal study
   
-
-
 ___
 
 ![NZAVS Daily Responses](timeline_histgram_2009_2024.png)
@@ -320,45 +267,182 @@ ___
 
 ![Mosque Attacks: Full Sample](muslim_attack_discontinuity_2012_2022_include_opt_in.png)
 
+
+
+## Institutional Trust
+
+**COVID-19 Government response**
+-   "I trust the Government to make sensible decisions about how to best manage COVID-19 in New Zealand."
+-   "The New Zealand government response to COVID-19."
+
+**Trust in politicians**
+-   "Politicians in New Zealand can generally be trusted."
+
+**Institutional trust in police**
+-   "People's basic rights are well protected by the New Zealand Police."
+-   "There are many things about the New Zealand Police and its policies that need to be changed."
+-   "The New Zealand Police care about the well-being of everyone they deal with."  
+
+**General tendency to believe in conspiracies**
+-   "I think that the official version of major world events given by authorities often hides the truth."
+
+
+___
+
+![plot_rdd_covid_trust_politicians](plot_rdd_covid_trust_politicians.png)
+
+___
+
+![plot_rdd_covid_trust_police](plot_rdd_covid_trust_police.png)
+
 ___
 
 
-\LARGE \centering  Gradual Events 
+![plot_rdd_covid_trust_science](plot_rdd_covid_trust_science.png)
+
+___
+
+![plot_rdd_covid_trust_conspiracy](plot_rdd_covid_trust_conspiracy.png)
+
+## Regulate Artificial Intelligence?
+
+___
+
+![better_combo_graph_govt_surveillance_ai](better_combo_graph_govt_surveillance_ai.png)
+
+___
+
+![plot_compare_monthly_weighted_means_govt_surveillance_ai](plot_compare_monthly_weighted_means_govt_surveillance_ai.png)
 
 
-## Religious Service Attendence 
+## Consider Gradual Events 
+
+___
+
+![plot_prob_church_attendance_nz_2009to2024](plot_prob_church_attendance_nz_2009to2024.png)
+
+## Shift Intervention: Religious Service:
+
+### Intervention
+$$f(A = a*) = \begin{cases} 4 & \text{if } A < 4  \text{ monthly religious service attendance} \\ \tilde{A} & \text{if } A \geq 4  \text{ monthly religious service attendance} \end{cases} $$
+
+### Contrast
+$$f(A) = 0 $$
 
 
-## Socialising 
+## Shift Intervention: Socialising
+
+### Intervention
+$$f(A) = \begin{cases} 1.4 & \text{if } A \leq 1.4 \text{ hours socialising with community} \\ \tilde{A} & \text{if } A >  1.4  \text{ hours socialising with community}  \end{cases} $$
+
+### Contrast:
+
+$$f(A) = 0 $$
 
 
-## Cash Value of Religious Service
 
+## Key Graph
+
+
+$$
+\threeLONG
+$$
+
+## Religious Service Outcomes
+
+___
+
+![plot_gain_church_prosocial_z.png](plot_gain_church_prosocial_z.png)
+___
+
+![plot_church_prejudice](plot_church_prejudice.png)
+
+___
+
+![plot_church_help_received](plot_church_help_received.png)
+
+___
+
+![plot_socializing_prosocial](plot_socializing_prosocial.png)
+___
+
+![plot_warm_socialising](plot_warm_socialising.png)
+___
+
+![plot_socialising_gain_help_received](plot_socialising_gain_help_received.png)
+
+## Results
+
+- The causal effects of religious service attendance on the economy are invisible, but likely considerable, representing in expectation ~ **0.048%** of New Zealand's 2021 annual government budget.
+- This result underscores the importance of investigating the consequences of gradual declines in cultural engagement and perhaps other domains of society.
+- What do you think we should be focussing on? 
+
+```{r}
+# #| label: calculation
+# 
+# 
+# # model estimates for charity under each intervention
+# counterfactual_charity_donate <-  1822.649
+# estimate_charity_donate <- 1118.993
+# # NZ > 18 year olds in 2022
+# nz_adult_population <- 3989000
+# 
+# # annual factual and counterfactual estimates
+# factual_charity_estimate <- nz_adult_population * estimate_charity_donate
+# counterfactual_factual_charity_estimate = nz_adult_population * counterfactual_charity_donate
+# 
+# # difference
+# counterfactual_difference_charity_donate = counterfactual_factual_charity_estimate - factual_charity_estimate
+# # percentage change
+# print(counterfactual_difference_charity_donate)
+# 
+# # ~ 3 billion NZD 
+# # 2,806,882,916
+# 
+# nz annual budget in 2021
+# nz_annual_budget = 14494000000 * 4 # treasury (https://www.treasury.govt.nz/publications/budgets/budget-2021)
+# 
+# # intervention as percentage of gov't annual budget 
+# counterfactual_difference_charity_donate/ nz_annual_budget
+```
+
+## Summary
+
+::: {.incremental}
+  1. To move beyond association to causality requires time, literally. 
+  2. Big events $\neq$ big effect sizes.
+  3. Long-term effects unclear.
+  4. Short-term change is perhaps more important for planning.
+:::
 
 
 ## Thanks {.nonincremental}
 
+:::{.nonincremental}
 - Chris G. Sibley (NZAVS lead Investigator)
 - TRT Grant 0418
 - Max Planck Institute for Evolutionary Anthropology
 - Victoria University
 - University of Canterbury
 - 72,290 NZAVS participants
+:::
 
 ___
 
-\LARGE \centering Extra Slides
+![NZAVS](NZAVS-QR.png)
+
+## Extra Slides
 
 ## Longitudinal Data Bring Their Own Problems 
 
 
-### Timing of Confounder
+## Timing of Confounder
 
 $$ 
 \threeBshortTHREEWAVE 
 $$
 
-###  Timing of Mediator 
+## Timing of Mediator 
 
 $$
 \threeCshortTHREEWAVE
@@ -384,7 +468,7 @@ $$
 \tiny \mediationfull
 $$
 
-# Mediation 
+## Mediation 
 
 ## Total Effect 
 
@@ -463,16 +547,17 @@ $$
 $$
 
 
-# Interaction
+## Interaction
 
 
-## Interaction: potential outcomes
+<!-- ## Interaction: potential outcomes -->
 
-$$\tiny {\bigg(\underbrace{\mathbb{E}[Y(1,1)]}_{\text{joint exposure}} - \underbrace{\mathbb{E}[Y(0,0)]}_{\text{neither exposed}}\bigg) - \bigg[ \bigg(\underbrace{\mathbb{E}[Y(1,0)]}_{\text{only A exposed}} - \underbrace{\mathbb{E}[Y(0,0)]}_{\text{neither exposed}}\bigg) + \bigg(\underbrace{\mathbb{E}[Y(0,1)]}_{\text{only B exposed}} - \underbrace{\mathbb{E}[Y(0,0)]}_{\text{neither exposed}} \bigg)\bigg] \neq 0} $$
+<!-- $$\tiny {\bigg(\underbrace{\mathbb{E}[Y(1,1)]}_{\text{joint exposure}} - \underbrace{\mathbb{E}[Y(0,0)]}_{\text{neither exposed}}\bigg) - \bigg[ \bigg(\underbrace{\mathbb{E}[Y(1,0)]}_{\text{only A exposed}} - \underbrace{\mathbb{E}[Y(0,0)]}_{\text{neither exposed}}\bigg) + \bigg(\underbrace{\mathbb{E}[Y(0,1)]}_{\text{only B exposed}} - \underbrace{\mathbb{E}[Y(0,0)]}_{\text{neither exposed}} \bigg)\bigg] \neq 0} $$ -->
 
 
 
 ## Interaction: simplifies to 
+
 $$\scriptsize{\underbrace{\mathbb{E}[Y(1,1)]}_{\text{joint exposure}} - \underbrace{\mathbb{E}[Y(1,0)]}_{\text{only A exposed}} - \underbrace{\mathbb{E}[Y(0,1)]}_{\text{only B exposed}} + \underbrace{\mathbb{E}[Y(0,0)]}_{\text{neither exposed}} \neq 0} $$
 
 
@@ -484,6 +569,14 @@ $$\scriptsize{\underbrace{\mathbb{E}[Y(1,1)]}_{\text{joint exposure}} - \underbr
 ## Key
 
 $$\terminologylocalconventions$$
+
+___
+
+\begin{adjustbox}{height=0.5\textheight, keepaspectratio}
+$$
+\footnotesize \terminologydirectedgraph
+$$
+\end{adjustbox}
 
 
 
