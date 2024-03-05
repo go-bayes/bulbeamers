@@ -1,0 +1,22 @@
+## Hello, World! {.unnumbered}
+
+
+### Description
+
+Prints 'Hello, world!'.
+
+
+
+### Usage
+
+<pre><code class='language-R'>hello()
+</code></pre>
+
+
+### Examples
+```{r, warning=FALSE, message=FALSE, eval=TRUE}
+library(bulbeamers)
+
+hello()
+
+```

@@ -1,0 +1,15 @@
+{
+  "hash": "65f9b2d7d130642293511242009f8745",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"nzavs causal infernece\"\nauthor: \"joseph bulbulia\"\nformat: \n  beamer: \n    aspectratio: 32\n    navigation: horizontal\n    theme: AnnArbor\n    colortheme: lily\n---\n\n\n\n## Quarto\n\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.\n\n## Bullets\n\nWhen you click the **Render** button a document will be generated that includes:\n\n-   Content authored with markdown\n-   Output from executable code\n\n## Code\n\nWhen you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\n\n::: {.cell}\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 2\n```\n\n\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

@@ -1,0 +1,489 @@
+---
+title: "Causal Inference in Three-Wave Panel Designs"
+author: Joseph A. Bulbulia
+institute: Joseph.Bulbulia@vuw.ac.nz // Victoria University
+fontfamily: libertinus
+bibliography: /Users/joseph/GIT/templates/bib/references.bib
+format: 
+  beamer: 
+    navigation: horizontal
+    aspectratio: 169
+    theme: CambridgeUS
+    colortheme: orchid
+    incremental: true  
+    header-includes:
+      - \input{/Users/joseph/GIT/latex/latex-for-quarto.tex}
+execute:
+  echo: false
+  warning: false
+  error: false
+---
+
+```{r}
+#| label: load-libraries
+#| echo: false
+#| include: false
+#| eval: true
+
+#tinytex::tlmgr_update()
+# for latex graphs
+# for making graphs
+library("tinytex")
+library("extrafont")
+library("ggplot2")
+library("patchwork")
+library("here")
+loadfonts(device = "all")
+#aspectratio: 169
+
+```
+
+
+#  The Fundamental Problem of Causal Inference
+
+
+## Causality Requires a Contrast of Exposures
+
+$$Y_{\text{you}}(1) - Y_{\text{you}}(0)$$  
+
+
+## But Individuals Experience Only **One** Exposure
+
+
+
+$$
+Y_i|A_i = 1 \implies Y_i(0)|A_i = 1~ \text{is counterfactual}
+$$
+
+
+## Average Treatment Effect in Randomised Controlled Experiments Work From Assumptions
+
+$$
+\text{Average Treatment Effect} = \left[ \begin{aligned}
+&\left( \underbrace{\mathbb{E}[Y(1)|A = 1]}_{\text{observed}} + \textcolor{red}{\underbrace{\mathbb{E}[Y(1)|A = 0]}_{\text{unobserved}}} \right) \\
+&- \left( \underbrace{\mathbb{E}[Y(0)|A = 0]}_{\text{observed}} + \textcolor{red}{\underbrace{\mathbb{E}[Y(0)|A = 1]}_{\text{unobserved}}} \right)
+\end{aligned} \right]
+$$
+
+# The Three Fundemental Assumptions of Causal Inference
+
+### Causal Consistency
+
+$$
+Y_i^{observed}|A_i = 
+\begin{cases} 
+Y_i(a^*) & \text{if } A_i = a^* \\
+Y_i(a) & \text{if } A_i = a
+\end{cases}
+$$
+
+
+
+### Conditional Exchangeabilty 
+
+$$
+Y(a) \coprod A | L \quad \text{or equivalently} \quad A \coprod Y(a) | L
+$$
+
+### Positivity 
+
+$$
+0 < Pr(A = a | L = l) < 1
+$$
+
+# Causal Diagrams & Structures of Confounding Bias
+
+
+___
+
+\begin{adjustbox}{height=0.5\textheight, keepaspectratio}
+$$
+\footnotesize \terminologydirectedgraph
+$$
+\end{adjustbox}
+
+
+## Counfounding 
+
+<!-- ### Common Cause -->
+
+
+<!-- :::: {.columns} -->
+
+<!-- ::: {.column width="50%"} -->
+<!-- $$\commoncauseA$$ -->
+<!-- ::: -->
+
+
+<!-- ::: {.column width="50%"} -->
+<!-- $$~$$ -->
+<!-- ::: -->
+
+
+
+<!-- :::: -->
+
+
+## Reverse Causation
+
+
+
+$$\ytoa$$
+
+
+
+## Mediator Bias
+
+
+$$\mediatorA$$
+
+## Collider Bias
+
+
+$$\colliderALONG$$
+
+
+
+## Collider Bias Proxy
+
+
+$$\descendantBBLONG$$
+
+
+
+
+
+
+## Post Exposure Collider Bias
+
+$$\mediatorcollider$$
+
+
+## Unmeasured Common Cause
+
+
+$$\downstream$$
+
+
+
+<!-- ### Common Cause: Longitudinal Solution  -->
+
+
+<!-- :::: {.columns} -->
+
+<!-- ::: {.column width="50%"} -->
+<!-- $$\commoncauseA$$ -->
+<!-- ::: -->
+
+
+<!-- ::: {.column width="50%"} -->
+<!-- $$\commoncausesolvedA$$ -->
+<!-- ::: -->
+
+<!-- :::: -->
+
+## Reverse Causation Solution: Longitudional Hygiene
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+$$\ytoa$$
+:::
+
+::: {.column width="50%"}
+$$\aandysolution$$
+:::
+
+::::
+
+## Mediator Bias Solution: Longitudional Hygiene
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+$$
+\mediatorA
+$$
+:::
+
+::: {.column width="50%"}
+$$
+\commoncausesolvedA
+$$
+:::
+
+::::
+
+
+
+## Collider Bias Solution: Longitudional Hygiene
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+$$\colliderALONG$$
+:::
+
+::: {.column width="50%"}
+$$\commoncausesolvedA$$
+:::
+
+::::
+
+## More Confounding Solutions: Longitudinal Hygiene 
+
+
+## Collider Bias Proxy Solution: Longitudional Hygiene
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+$$\descendantBBLONG$$
+:::
+
+::: {.column width="50%"}
+$$\commoncausesolvedchild$$
+:::
+
+::::
+
+
+
+
+## Post Exposure Collider Bias Solution: Longitudional Hygiene
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+$$\mediatorcollider$$
+:::
+
+::: {.column width="50%"}
+$$\commoncausesolvedA$$
+:::
+
+::::
+
+
+
+
+
+
+## Unmeasured Common Cause Solution: Longitudional Hygiene
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+$$\downstream$$
+:::
+
+::: {.column width="50%"}
+$$\commoncausesolvedA$$
+:::
+
+::::
+
+# New Zealand Attitudes and Values Study
+
+## The New Zealand Attitudes and Values Study {.build}
+
+  - Planned 20-year longitudinal study, currently in its 14$^{th}$ year.
+  
+  - Sample frame drawn randomly from NZ Electoral Roll.
+
+  - Postal questionnaire (coverage; retention ~ 80%)
+    
+  - Large multidisciplinary research team (40 +)
+    
+  - Focus on personality, social attitudes, values, religion, employment, prejudice $\dots$
+    
+  - Current sample contains > 72,290,000 unique people, and ~ 38,000 in the longitudinal study
+  
+
+
+___
+
+![NZAVS Daily Responses](timeline_histgram_2009_2024.png)
+
+
+## Big Events 
+
+___
+
+![Mosque Attacks: Full Sample](muslim_attack_discontinuity_2012_2022_include_opt_in.png)
+
+___
+
+
+
+
+## Gradual Events 
+
+
+## Religious Service Attendence 
+
+
+## Socialising 
+
+
+## Cash Value of Religious Service
+
+
+
+## Thanks {.nonincremental}
+
+- Chris G. Sibley (NZAVS lead Investigator)
+- TRT Grant 0418
+- Max Planck Institude for Evolutionary Anthropology
+- Victoria University
+- University of Canterbury
+- 72,290 NZAVS participants
+
+# Extra Slides
+
+## Longitudinal Data Bring Their Own Problems 
+
+
+### Timing of Confounder
+
+$$ 
+\threeBshortTHREEWAVE 
+$$
+
+###  Timing of Mediator 
+
+$$
+\threeCshortTHREEWAVE
+$$
+
+## Treatment Confounder Bias
+
+$$\feedback$$
+
+## Treatment Confounder Feedback
+
+$$\feedbackA$$
+
+## Treatment Confounder Feedback Variation
+
+
+$$\feedbackBshort$$
+
+## Mediation
+
+
+$$
+\tiny \mediationfull
+$$
+
+# Mediation 
+
+## Total Effect 
+
+:::: {.columns}
+
+::: {.column width="50%"}
+$$
+TE = \mathbb{E}[Y(1)] - \mathbb{E}[Y(0)]
+$$
+:::
+
+::: {.column width="60%"}
+$$~~$$
+:::
+
+::::
+
+
+
+## Total Effect Considering Mediator
+
+:::: {.columns}
+
+::: {.column width="50%"}
+$$
+TE = \mathbb{E}[Y(1)] - \mathbb{E}[Y(0)]
+$$
+:::
+
+::: {.column width="50%"}
+$$ 
+\mathbb{E}[Y(1)] = \mathbb{E}[Y(1, M(1))]
+$$
+:::
+
+::::
+
+
+## Natural Direct Effect
+
+**Natural Direct Effect (NDE)** is the effect of the treatment on the
+outcome while maintaining the mediator at the level it would have been
+if the treatment had *not* been applied:
+
+$$
+ NDE = \textcolor{blue}{\mathbb{E}[Y(1, M(0))]} - \mathbb{E}[Y(0, M(0))]
+$$
+
+
+
+
+## Natural Indirect Effect
+
+**Natural Indirect Effect (NIE):** is the effect of the exposure on the
+outcome that is mediated. To obtain these quantities we must compare the
+potential outcome $Y$ under treatment, where the mediator assumes its
+natural level under treatment with the potential outcome when the
+mediator assumes its natural value under no treatment is given:
+
+$$
+ NIE = \mathbb{E}[Y(1, M(1))] - \textcolor{blue}{\mathbb{E}[Y(1, M(0))]}
+$$
+
+## Decomposition
+
+$$
+\scriptsize{ \text{Total Effect (TE)} = \underbrace{\bigg\{\mathbb{E}[Y(1, M(1))] - \textcolor{blue}{\mathbb{E}[Y(1, M(0))]}\bigg\}}_{\text{Natural Indirect Effect (NIE)}} + \underbrace{\bigg\{\textcolor{blue}{\mathbb{E}[Y(1, M(0))]} - \mathbb{E}[Y(0, M(0))]\bigg\}}_{\text{Natural Direct Effect (NDE)}}}
+$$
+
+
+## Why Mediation is Difficult
+
+
+$$
+\mediationfull
+$$
+
+
+# Interaction
+
+
+## Interaction: potential outcomes
+
+$$\tiny {\bigg(\underbrace{\mathbb{E}[Y(1,1)]}_{\text{joint exposure}} - \underbrace{\mathbb{E}[Y(0,0)]}_{\text{neither exposed}}\bigg) - \bigg[ \bigg(\underbrace{\mathbb{E}[Y(1,0)]}_{\text{only A exposed}} - \underbrace{\mathbb{E}[Y(0,0)]}_{\text{neither exposed}}\bigg) + \bigg(\underbrace{\mathbb{E}[Y(0,1)]}_{\text{only B exposed}} - \underbrace{\mathbb{E}[Y(0,0)]}_{\text{neither exposed}} \bigg)\bigg] \neq 0} $$
+
+
+
+## Interaction: simplifies to 
+$$\scriptsize{\underbrace{\mathbb{E}[Y(1,1)]}_{\text{joint exposure}} - \underbrace{\mathbb{E}[Y(1,0)]}_{\text{only A exposed}} - \underbrace{\mathbb{E}[Y(0,1)]}_{\text{only B exposed}} + \underbrace{\mathbb{E}[Y(0,0)]}_{\text{neither exposed}} \neq 0} $$
+
+
+<!-- A positive value would indicate evidence for additive interaction. A -->
+<!-- negative value would indicate evidence for sub-additive interaction. A -->
+<!-- value near zero would imply no reliable evidence for interaction. -->
+
+
+## Key
+
+$$\terminologylocalconventions$$
+
+
+
+
+

@@ -1,0 +1,9 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+altdoc/freeze.rds
+^_quarto$
+*.DS_Store
+
+/.quarto/

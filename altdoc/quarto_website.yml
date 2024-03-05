@@ -1,0 +1,26 @@
+project:
+  type: website
+
+website:
+  title: "bulbeamer"
+  navbar:
+    search: true
+    right:
+      - icon: github
+  sidebar:
+    collapse-level: 3
+    contents:
+      - text: Home
+        file: index.qmd
+      - section: man
+      - text: News
+        file: NEWS.md
+      - text: License
+        file: LICENSE.md
+      - text: Citation
+        file: inst/CITATION
+
+# format:
+#   html:
+#     theme: cosmo
+#     number-sections: false
