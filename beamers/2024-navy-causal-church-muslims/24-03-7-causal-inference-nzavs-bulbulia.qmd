@@ -131,8 +131,6 @@ $$\downstream$$
 
 
 
-
-
 ## Reverse Causation Solution: Longitudional Hygiene
 
 
@@ -169,7 +167,7 @@ $$
 
 
 
-## Collider Bias Solution: Longitudional Hygiene
+## Collider Bias **Solution**: Longitudional Hygiene
 
 
 :::: {.columns}
@@ -203,7 +201,7 @@ $$\commoncausesolvedchild$$
 
 
 
-## Post Exposure Collider Bias Solution: Longitudional Hygiene
+## Post Exposure Collider Bias **Solution**: Longitudional Hygiene
 
 
 :::: {.columns}
@@ -223,7 +221,7 @@ $$\commoncausesolvedA$$
 
 
 
-## Unmeasured Common Cause Solution: Longitudional Hygiene
+## Unmeasured Common Cause **Solution**: Longitudional Hygiene
 
 
 :::: {.columns}
@@ -240,7 +238,7 @@ $$\commoncausesolvedA$$
 
 # New Zealand Attitudes and Values Study
 
-## The New Zealand Attitudes and Values Study
+## The New Zealand Attitudes and Values Study: Longitudinally Hygeinic Data Collection
 
   - Planned 20-year longitudinal study, currently in its 14$^{th}$ year.
   
@@ -258,7 +256,6 @@ ___
 
 ![NZAVS Daily Responses](timeline_histgram_2009_2024.png)
 
-
 ___
 
 \LARGE \centering BIG EVENTS
@@ -267,6 +264,7 @@ ___
 
 ![Mosque Attacks: Full Sample](muslim_attack_discontinuity_2012_2022_include_opt_in.png)
 
+___
 
 
 ## Institutional Trust
@@ -304,6 +302,8 @@ ___
 
 ![plot_rdd_covid_trust_conspiracy](plot_rdd_covid_trust_conspiracy.png)
 
+___
+
 ## Regulate Artificial Intelligence?
 
 ___
@@ -315,13 +315,16 @@ ___
 ![plot_compare_monthly_weighted_means_govt_surveillance_ai](plot_compare_monthly_weighted_means_govt_surveillance_ai.png)
 
 
-## Consider Gradual Events 
+___
+
+Consider Gradual Events 
 
 ___
 
 ![plot_prob_church_attendance_nz_2009to2024](plot_prob_church_attendance_nz_2009to2024.png)
 
-## Shift Intervention: Religious Service:
+
+## Worked Example: Casual Effects of Religious Service on Prosociality
 
 ### Intervention
 $$f(A = a*) = \begin{cases} 4 & \text{if } A < 4  \text{ monthly religious service attendance} \\ \tilde{A} & \text{if } A \geq 4  \text{ monthly religious service attendance} \end{cases} $$
@@ -330,7 +333,7 @@ $$f(A = a*) = \begin{cases} 4 & \text{if } A < 4  \text{ monthly religious servi
 $$f(A) = 0 $$
 
 
-## Shift Intervention: Socialising
+## Shift Intervention: Socializing
 
 ### Intervention
 $$f(A) = \begin{cases} 1.4 & \text{if } A \leq 1.4 \text{ hours socialising with community} \\ \tilde{A} & \text{if } A >  1.4  \text{ hours socialising with community}  \end{cases} $$
@@ -340,42 +343,60 @@ $$f(A) = \begin{cases} 1.4 & \text{if } A \leq 1.4 \text{ hours socialising with
 $$f(A) = 0 $$
 
 
-
-## Key Graph
+## **Key Graph**
 
 
 $$
 \threeLONG
 $$
 
+
 ## Religious Service Outcomes
 
 ___
 
+
 ![plot_gain_church_prosocial_z.png](plot_gain_church_prosocial_z.png)
+
 ___
+
 
 ![plot_church_prejudice](plot_church_prejudice.png)
 
 ___
 
+
 ![plot_church_help_received](plot_church_help_received.png)
 
+
 ___
+
+## Socializing Outcomes
+
+___
+
 
 ![plot_socializing_prosocial](plot_socializing_prosocial.png)
+
 ___
 
+
 ![plot_warm_socialising](plot_warm_socialising.png)
+
 ___
+
 
 ![plot_socialising_gain_help_received](plot_socialising_gain_help_received.png)
 
+
+___
+
+
 ## Results
 
-- The causal effects of religious service attendance on the economy are invisible, but likely considerable, representing in expectation ~ **0.048%** of New Zealand's 2021 annual government budget.
-- This result underscores the importance of investigating the consequences of gradual declines in cultural engagement and perhaps other domains of society.
-- What do you think we should be focussing on? 
+- Causal effects of religious service attendance on the economy are considerable, in expectation they represent ~ **0.048%** of New Zealand's 2021 annual government budget.
+- These results underscores the importance of investigating the consequences of gradual change in cultural engagement.
+- **What do you think we should be focussing on?** 
 
 ```{r}
 # #| label: calculation
@@ -412,7 +433,7 @@ ___
   1. To move beyond association to causality requires time, literally. 
   2. Big events $\neq$ big effect sizes.
   3. Long-term effects unclear.
-  4. Short-term change is perhaps more important for planning.
+  4. Long-term change might be more important for planning.
 :::
 
 
@@ -430,6 +451,12 @@ ___
 ___
 
 ![NZAVS](NZAVS-QR.png)
+
+___
+
+![Causal Diagrams](qr-causal-diagrams.png)
+
+___
 
 ## Extra Slides
 
