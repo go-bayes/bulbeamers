@@ -1,6 +1,6 @@
 # script
 # joseph bulbulia
-# talk to navy march 2024
+# talk to march 2024
 
 
 # WARNING:  COMMENT THIS OUT. JB DOES THIS FOR WORKING WITHOUT WIFI
@@ -33,7 +33,7 @@ path_talk <- '/Users/joseph/GIT/bulbeamers/beamers/2024-navy-causal-church-musli
 # read data
 dat <- arrow::read_parquet(pull_path)
 
-
+skimr::n_unique(dat$id)
 
 # timeline ----------------------------------------------------------------
 
@@ -79,7 +79,7 @@ str(df_timeline)
 head(df_timeline)
 
 # check n
-n_unique(dat$id)
+skimr::n_unique(dat$id)
 
 # make timeline
 timeline_histgram_2009_2024 <-  ggplot(df_timeline, aes(x = day, y = n, fill = nzavs_wave)) +
@@ -87,17 +87,24 @@ timeline_histgram_2009_2024 <-  ggplot(df_timeline, aes(x = day, y = n, fill = n
   scale_y_continuous(expand = c(0, 0), limits = c(0, NA)) +
   labs(
     title = "New Zealand Attitudes and Values Study (panel)",
-    subtitle = "N = 72,910; years 2012-2022",
-    x = "NZAVS years 2012- 2022 cohort (N = 72,910): daily counts by condition",
+    subtitle = "N = 72,910; years 2012-2023",
+    x = "NZAVS years 2012- 2023 (N = 72,910): daily counts by NZAVS wave",
     y = "Count of Responses"
   ) +
   theme_classic() +
   scale_fill_viridis_d() +
   theme(
+    plot.title = element_text(size = 22, face = "bold"),
+    plot.subtitle = element_text(size = 18),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
     legend.position = "none",
-    legend.text = element_text(size = 12),
-    legend.title = element_text(size = 12)
+    legend.text = element_text(size = 30), # Adjust if you enable legend
+    legend.title = element_text(size = 30) # Adjust if you enable legend
   )
+
 
 
 #  plot
@@ -134,6 +141,7 @@ tl <- dat %>%
 # check n
 length(unique(tl$id))
 
+library(ggokabeito)
 
 # discontinuity plot
 muslim_attack_discontinuity_2012_2022_include_opt_in <-
@@ -143,17 +151,23 @@ muslim_attack_discontinuity_2012_2022_include_opt_in <-
   theme(legend.position = "bottom") +
   labs(
     title = "Discontinuity at attacks (GAM)",
-    subtitle = "Boost to Warmth increase in the years following the attacks: FULL SAMPLE",
+    subtitle = "Pre/post responses: sustained boost to Muslim Warmth",
     y = "Muslim Warmth",
-    x = "NZAVS Time 4 - 14 Cohort (2012-2023), (N = 71,128)"
+    x = "NZAVS Time 4 - 14 (2012-2023), (N = 71,128)"
   ) +
   scale_okabe_ito(alpha = 1, aesthetics = "colour") + theme_classic() +
   theme(
-    legend.position = "top",
-    legend.text = element_text(size = 12),
-    legend.title = element_text(size = 12)
+    plot.title = element_text(size = 22, face = "bold"),
+    plot.subtitle = element_text(size = 18),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    legend.position = "none",
+    legend.text = element_text(size = 30), # Adjust if you enable legend
+    legend.title = element_text(size = 30) # Adjust if you enable legend
   )
-
+muslim_attack_discontinuity_2012_2022_include_opt_in
 # save
 ggsave(
   muslim_attack_discontinuity_2012_2022_include_opt_in,
@@ -240,19 +254,24 @@ muslim_attack_discontinuity_2012_2022_include_opt_in <-
     y = "Muslim Warmth",
     x = "NZAVS Time 4 - 14 Cohort (2012-2023), (N = 71,128)"
   ) +
-  scale_okabe_ito(alpha = 1, aesthetics = "colour") + theme_classic() +
+  scale_okabe_ito(alpha = 1, aesthetics = "colour") + theme_classic()+
   theme(
-    legend.position = "top",
-    legend.text = element_text(size = 12),
-    legend.title = element_text(size = 12)
+    plot.title = element_text(size = 22, face = "bold"),
+    plot.subtitle = element_text(size = 18),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    legend.position = "none",
+    legend.text = element_text(size = 30), # Adjust if you enable legend
+    legend.title = element_text(size = 30) # Adjust if you enable legend
   )
-
 muslim_attack_discontinuity_2012_2022_include_opt_in
 
 # save
 ggsave(
   muslim_attack_discontinuity_2012_2022_include_opt_in,
-  path = here::here("figures"),
+  path = path_talk,
   width = 16,
   height = 9,
   units = "in",
@@ -297,9 +316,15 @@ plot_rdd_covid_trust_police <-
   ) +
   scale_okabe_ito(alpha = 1, aesthetics = "colour") + theme_classic() +
   theme(
-    legend.position = "top",
-    legend.text = element_text(size = 12),
-    legend.title = element_text(size = 12)
+    plot.title = element_text(size = 22, face = "bold"),
+    plot.subtitle = element_text(size = 18),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    legend.position = "none",
+    legend.text = element_text(size = 30), # Adjust if you enable legend
+    legend.title = element_text(size = 30) # Adjust if you enable legend
   )
 
 plot_rdd_covid_trust_police
@@ -332,9 +357,15 @@ plot_rdd_covid_trust_politicians <-
   ) +
   scale_okabe_ito(alpha = 1, aesthetics = "colour") + theme_classic() +
   theme(
-    legend.position = "top",
-    legend.text = element_text(size = 12),
-    legend.title = element_text(size = 12)
+    plot.title = element_text(size = 22, face = "bold"),
+    plot.subtitle = element_text(size = 18),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    legend.position = "none",
+    legend.text = element_text(size = 30), # Adjust if you enable legend
+    legend.title = element_text(size = 30) # Adjust if you enable legend
   )
 plot_rdd_covid_trust_politicians
 
@@ -381,9 +412,15 @@ plot_rdd_covid_trust_science <-
   ) +
   scale_okabe_ito(alpha = 1, aesthetics = "colour") + theme_classic() +
   theme(
-    legend.position = "top",
-    legend.text = element_text(size = 12),
-    legend.title = element_text(size = 12)
+    plot.title = element_text(size = 22, face = "bold"),
+    plot.subtitle = element_text(size = 18),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    legend.position = "none",
+    legend.text = element_text(size = 30), # Adjust if you enable legend
+    legend.title = element_text(size = 30) # Adjust if you enable legend
   )
 plot_rdd_covid_trust_science
 
@@ -415,9 +452,15 @@ plot_rdd_covid_trust_conspiracy <-
   ) +
   scale_okabe_ito(alpha = 1, aesthetics = "colour") + theme_classic() +
   theme(
-    legend.position = "top",
-    legend.text = element_text(size = 12),
-    legend.title = element_text(size = 12)
+    plot.title = element_text(size = 22, face = "bold"),
+    plot.subtitle = element_text(size = 18),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    legend.position = "none",
+    legend.text = element_text(size = 30), # Adjust if you enable legend
+    legend.title = element_text(size = 30) # Adjust if you enable legend
   )
 plot_rdd_covid_trust_conspiracy
 
@@ -543,7 +586,7 @@ dat_2022 <- dat %>%
 
 
 
-n_unique(dat_2022$id)
+skimr::n_unique(dat_2022$id)
 
 
 # spare
@@ -553,11 +596,11 @@ dat_2022_error  <- dat %>%
   dplyr::filter(timeline < "2022-09-22") # nzavs codebook
 
 
-n_unique(dat_2022_error$id)
+skimr::n_unique(dat_2022_error$id)
 
 
 dat_2022_error$id
-
+library(gam)
 ## MODEL WITH WEIGHTS
 
 gam_model_issue_govt_surveillance  <-
@@ -600,12 +643,22 @@ graph_issue_govt_surveillance <-
     aes(x = timeline, y = issue_govt_surveillance),
     color = "blue"
   ) +
-  labs(title = "Collection of telephone and internet data by\nthe New Zealand Government as part of anti-terrorism efforts",
+  labs(title = "Collection of telephone and internet data by\nthe New Zealand Government\nas part of anti-terrorism efforts",
        y = "Approve Government Surveillance",
-       x = "NZAVS T14: n = 33643 (missing = 2001)") +
+       x = "n = 33643") +
   theme_classic() +
   scale_okabe_ito(alpha = .1, aesthetics = "colour") +
-  theme(legend.position = "none")
+  theme(
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 18),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    legend.position = "none",
+    legend.text = element_text(size = 30), # Adjust if you enable legend
+    legend.title = element_text(size = 30) # Adjust if you enable legend
+  )
 
 graph_issue_govt_surveillance
 
@@ -659,18 +712,29 @@ graph_issue_regulate_ai <-
   geom_line(data = predictions_ai,
             aes(x = timeline, y = issue_regulate_ai),
             color = "red") +
-  labs(title =  "Strict regulation limiting the development and use of Artificial Intelligence",
+  labs(title =  "Strict regulation limiting the development\nand use of Artificial Intelligence",
        y = "Approve AI Regulation",
-       x = "NZAVS T14: n = 33643 (missing = 2150)") +
+       x = "n = 33643") +
   theme_classic() +
   scale_okabe_ito(alpha = 1, aesthetics = "colour") +
-  theme(legend.position = "none")
+  theme(
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 18),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    legend.position = "none",
+    legend.text = element_text(size = 30), # Adjust if you enable legend
+    legend.title = element_text(size = 30) # Adjust if you enable legend
+  )
+
 
 graph_issue_regulate_ai
-
+library(patchwork)
 combo_weighted_gam_3 <-
   graph_issue_govt_surveillance + graph_issue_regulate_ai + plot_annotation(title = "Comparison of Attitudes to New Zealand Government Interventions from 2022-SEP-22 to 2023-OCT-10",
-                                                                            subtitle = "Generalised Additive Model: 3-knot splines weighted to NZ Census Age/Gender/Ethnicity, NZAVS (n=33643)",
+                                                                            subtitle = "Generalised Additive Model: 3-knot splines weighted to NZ Census Age/Gender/Ethnicity NZAVS (n=33643)",
                                                                             tag_levels = "A")
 
 
@@ -840,7 +904,7 @@ plot_regulate_ai <-
   geom_point() +
   geom_errorbar(aes(ymin = regulate_ai_lower_ci, ymax = regulate_ai_upper_ci),
                 width = 0.2) +
-  labs(title = "Strict regulation limiting the development and use of Artificial Intelligence",
+  labs(title = "Strict regulation limiting the development\nand use of Artificial Intelligence",
        x = "Month and Year",
        y = "Weighted Mean") +
   theme_minimal() +
@@ -852,7 +916,7 @@ plot_govt_surveillance <-
   geom_point() +
   geom_errorbar(aes(ymin = govt_surveillance_lower_ci, ymax = govt_surveillance_upper_ci),
                 width = 0.2) +
-  labs(title = "Collection of telephone and internet data by the New Zealand Government as part of anti-terrorism efforts",
+  labs(title = "Collection of telephone and internet data by the New\nZealand Government as part of anti-terrorism efforts",
        x = "Month and Year",
        y = "Weighted Mean") +
   theme_minimal() +
@@ -1005,17 +1069,22 @@ plot_religious_change <-
   theme_minimal() +
   theme(legend.position = "bottom") +
   labs(
-    title = "Probability of Church Attendance in New Zealand: Years 2009 - 2023",
+    title = "Probability of Church Attendance in New Zealand:\nYears 2009 - 2023",
     y = "Probability Church Attendance",
     x = "NZAVS Time 1 - 14 (2009-2023), (N = 72854)"
   ) +
 #  scale_okabe_ito(alpha = 1, aesthetics = "colour") + theme_classic() +
   theme(
-    legend.position = "top",
-    legend.text = element_text(size = 12),
-    legend.title = element_text(size = 12)
+    plot.title = element_text(size = 22, face = "bold"),
+    plot.subtitle = element_text(size = 18),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14),
+    legend.position = "none",
+    legend.text = element_text(size = 30), # Adjust if you enable legend
+    legend.title = element_text(size = 30) # Adjust if you enable legend
   )
-
 plot_religious_change
 
 # save
@@ -1141,6 +1210,50 @@ ggsave(
 
 ## Read in data from analysis
 # imports
+
+# WARNING:  COMMENT THIS OUT. JB DOES THIS FOR WORKING WITHOUT WIFI
+source("/Users/joseph/GIT/templates/functions/libs2.R")
+
+# WARNING:  COMMENT THIS OUT. JB DOES THIS FOR WORKING WITHOUT WIFI
+source("/Users/joseph/GIT/templates/functions/funs.R")
+
+# ALERT: UNCOMMENT THIS AND DOWNLOAD THE FUNCTIONS FROM JB's GITHUB
+source(
+  "https://raw.githubusercontent.com/go-bayes/templates/main/functions/experimental_funs.R"
+)
+
+# experimental functions (more functions)
+# source(
+#   "https://raw.githubusercontent.com/go-bayes/templates/main/functions/experimental_funs.R"
+# )
+
+
+## WARNING SET THIS PATH TO YOUR DATA ON YOUR SECURE MACHINE.
+pull_path <-
+  fs::path_expand(
+    #"/Users/joseph/v-project\ Dropbox/Joseph\ Bulbulia/00Bulbulia\ Pubs/DATA/nzavs_refactor/nzavs_data_23"
+    "/Users/joseph/Library/CloudStorage/Dropbox-v-project/Joseph\ Bulbulia/00Bulbulia\ Pubs/DATA/nzavs-current/r-data/nzavs_data"
+  )
+
+# read data: note that you need use the arrow package in R
+
+dat <- arrow::read_parquet(pull_path)
+
+
+### WARNING: THIS PATH WILL NOT WORK FOR YOU. PLEASE SET A PATH TO YOUR OWN COMPUTER!! ###
+### WARNING: FOR EACH NEW STUDY SET UP A DIFFERENT PATH OTHERWISE YOU WILL WRITE OVER YOUR MODELS
+push_mods <-  fs::path_expand(
+  "/Users/joseph/v-project\ Dropbox/data/nzvs_mods/00drafts/23-ow-coop-church-lmtp"
+)
+
+# check path:is this correct?  check so you know you are not overwriting other directors
+push_mods
+
+
+# set exposure here
+nzavs_exposure <- "religion_church_round"
+
+
 n_participants <-  here_read("n_participants")
 n_participants
 # read standard deviations units of outcome (volunteering/donations) in 2020
@@ -1266,22 +1379,34 @@ group_tab_compare_church_prosocial_behaviour_z<- here_read("group_tab_compare_ch
 tab_compare_church_prosocial_behaviour_z
 group_tab_compare_church_prosocial_behaviour_z
 
+# settings for other plots
+theme(
+  plot.title = element_text(size = 22, face = "bold"),
+  plot.subtitle = element_text(size = 18),
+  axis.title.x = element_text(size = 16),
+  axis.title.y = element_text(size = 16),
+  axis.text.x = element_text(size = 14),
+  axis.text.y = element_text(size = 14),
+  legend.position = "none",
+  legend.text = element_text(size = 30), # Adjust if you enable legend
+  legend.title = element_text(size = 30) # Adjust if you enable legend
+)
 
 plot_gain_church_prosocial_z <- margot_plot(
   group_tab_compare_church_prosocial_behaviour_z,
   type = "RD",
-  title = "Religious service effect on reported donations and volunteering",
+  title = "Religious service: donations and volunteering",
   subtitle = ">= 1 x weekly religious service attendance",
   xlab = "",
   ylab = "",
   estimate_scale = 1,
-  base_size = 8,
-  text_size = 2.5,
-  point_size = .5,
-  title_size = 12,
-  subtitle_size = 11,
-  legend_text_size = 8,
-  legend_title_size = 10,
+  base_size = 20,
+  text_size = 5,
+  point_size = 1,
+  title_size = 24,
+  subtitle_size = 22,
+  legend_text_size = 16,
+  legend_title_size = 20,
   x_offset = -1,
   x_lim_lo = -1,
   x_lim_hi =  .5
@@ -1319,18 +1444,18 @@ group_tab_compare_church_prosocial_behaviour_z_loss
 plot_loss_church_prosocial_z <- margot_plot(
   group_tab_compare_church_prosocial_behaviour_z_loss,
   type = "RD",
-  title = "Religious service effect on reported donations and volunteering",
+  title = "Religious service: donations and volunteering",
   subtitle = "Lose any religious service",
   xlab = "",
   ylab = "",
   estimate_scale = 1,
-  base_size = 8,
-  text_size = 2.5,
-  point_size = .5,
-  title_size = 12,
-  subtitle_size = 11,
-  legend_text_size = 8,
-  legend_title_size = 10,
+  base_size = 20,
+  text_size = 5,
+  point_size = 1,
+  title_size = 24,
+  subtitle_size = 22,
+  legend_text_size = 16,
+  legend_title_size = 20,
   x_offset = -1,
   x_lim_lo = -1,
   x_lim_hi =  .5
@@ -1352,18 +1477,18 @@ group_tab_warm_church
 plot_prejudice_church <- margot_plot(
   group_tab_warm_church,
   type = "RD",
-  title = "Religious service effect on prejudice/acceptance",
+  title = "Religious service: Warmth",
   subtitle = ">= 1 x weekly service attendance",
   xlab = "",
   ylab = "",
   estimate_scale = 1,
-  base_size = 8,
-  text_size = 2.5,
-  point_size = .5,
-  title_size = 12,
-  subtitle_size = 11,
-  legend_text_size = 8,
-  legend_title_size = 10,
+  base_size = 20,
+  text_size = 5,
+  point_size = 1,
+  title_size = 24,
+  subtitle_size = 22,
+  legend_text_size = 16,
+  legend_title_size = 20,
   x_offset = -1,
   x_lim_lo = -1,
   x_lim_hi =  .5
@@ -1371,7 +1496,17 @@ plot_prejudice_church <- margot_plot(
 
 plot_prejudice_church
 
-
+ggsave(
+  plot_prejudice_church,
+  path = path_talk
+  width = 8,
+  height = 6,
+  units = "in",
+  filename ="plot_prejudice_church.png",
+  device = 'png',
+  limitsize = FALSE,
+  dpi = 600
+)
 
 ### LOSS CHURCH PREJUDICE
 
@@ -1383,23 +1518,34 @@ group_tab_warm_church_loss
 plot_prejudice_church_loss <- margot_plot(
   group_tab_warm_church_loss,
   type = "RD",
-  title = "Religious service effect on prejudice/acceptance",
+  title = "Religious service: Warmth",
   subtitle = "Lose any religious service",
   xlab = "",
   ylab = "",
   estimate_scale = 1,
-  base_size = 8,
-  text_size = 2.5,
-  point_size = .5,
-  title_size = 12,
-  subtitle_size = 11,
-  legend_text_size = 8,
-  legend_title_size = 10,
+  base_size = 20,
+  text_size = 5,
+  point_size = 1,
+  title_size = 24,
+  subtitle_size = 22,
+  legend_text_size = 16,
+  legend_title_size = 20,
   x_offset = -1,
   x_lim_lo = -1,
   x_lim_hi =  .5
 )
 
+ggsave(
+  plot_prejudice_church_loss,
+  path = here::here(here::here(push_mods, "figs")),
+  width = 8,
+  height = 6,
+  units = "in",
+  filename ="plot_prejudice_church_loss.png",
+  device = 'png',
+  limitsize = FALSE,
+  dpi = 600
+)
 
 # combo graph
 plot_prejudice_church / plot_prejudice_church_loss + plot_annotation(tag_levels = "A")
@@ -1428,21 +1574,21 @@ group_tab_church_help_received
 plot_church_help_received <- margot_plot(
   group_tab_church_help_received,
   type = "RR",
-  title = "Religious service effect on help received",
+  title = "Religious Service: Help Received",
   subtitle = ">= 1 x weekly service attendance",
   xlab = "",
   ylab = "",
   estimate_scale = 1,
-  base_size = 8,
-  text_size = 2.5,
-  point_size = .5,
-  title_size = 12,
-  subtitle_size = 11,
-  legend_text_size = 8,
-  legend_title_size = 10,
-  x_offset = 0,
-  x_lim_lo = 0,
-  x_lim_hi =  2
+  base_size = 20,
+  text_size = 5,
+  point_size = 1,
+  title_size = 24,
+  subtitle_size = 22,
+  legend_text_size = 16,
+  legend_title_size = 20,
+  x_offset = -1,
+  x_lim_lo = -1,
+  x_lim_hi =  .5
 )
 
 plot_church_help_received
@@ -1518,13 +1664,13 @@ plot_socializing_prosocial<- margot_plot(
   xlab = "",
   ylab = "",
   estimate_scale = 1,
-  base_size = 8,
-  text_size = 2.5,
-  point_size = .5,
-  title_size = 12,
-  subtitle_size = 11,
-  legend_text_size = 8,
-  legend_title_size = 10,
+  base_size = 20,
+  text_size = 5,
+  point_size = 1,
+  title_size = 24,
+  subtitle_size = 22,
+  legend_text_size = 16,
+  legend_title_size = 20,
   x_offset = -1,
   x_lim_lo = -1,
   x_lim_hi =  .5
@@ -1565,13 +1711,13 @@ plot_socializing_prosocial_loss_z<- margot_plot(
   xlab = "",
   ylab = "",
   estimate_scale = 1,
-  base_size = 8,
-  text_size = 2.5,
-  point_size = .5,
-  title_size = 12,
-  subtitle_size = 11,
-  legend_text_size = 8,
-  legend_title_size = 10,
+  base_size = 20,
+  text_size = 5,
+  point_size = 1,
+  title_size = 24,
+  subtitle_size = 22,
+  legend_text_size = 16,
+  legend_title_size = 20,
   x_offset = -1,
   x_lim_lo = -1,
   x_lim_hi =  .5
@@ -1604,13 +1750,13 @@ plot_socializing_prosocial<- margot_plot(
   xlab = "",
   ylab = "",
   estimate_scale = 1,
-  base_size = 8,
-  text_size = 2.5,
-  point_size = .5,
-  title_size = 12,
-  subtitle_size = 11,
-  legend_text_size = 8,
-  legend_title_size = 10,
+  base_size = 20,
+  text_size = 5,
+  point_size = 1,
+  title_size = 24,
+  subtitle_size = 22,
+  legend_text_size = 16,
+  legend_title_size = 20,
   x_offset = -1,
   x_lim_lo = -1,
   x_lim_hi =  .5
@@ -1633,13 +1779,13 @@ plot_warm_socialising <- margot_plot(
   xlab = "",
   ylab = "",
   estimate_scale = 1,
-  base_size = 8,
-  text_size = 2.5,
-  point_size = .5,
-  title_size = 12,
-  subtitle_size = 11,
-  legend_text_size = 8,
-  legend_title_size = 10,
+  base_size = 20,
+  text_size = 5,
+  point_size = 1,
+  title_size = 24,
+  subtitle_size = 22,
+  legend_text_size = 16,
+  legend_title_size = 20,
   x_offset = -1,
   x_lim_lo = -1,
   x_lim_hi =  .5
@@ -1672,13 +1818,13 @@ plot_warm_socialising_loss <- margot_plot(
   xlab = "",
   ylab = "",
   estimate_scale = 1,
-  base_size = 8,
-  text_size = 2.5,
-  point_size = .5,
-  title_size = 12,
-  subtitle_size = 11,
-  legend_text_size = 8,
-  legend_title_size = 10,
+  base_size = 20,
+  text_size = 5,
+  point_size = 1,
+  title_size = 24,
+  subtitle_size = 22,
+  legend_text_size = 16,
+  legend_title_size = 20,
   x_offset = -1,
   x_lim_lo = -1,
   x_lim_hi =  .5
@@ -1709,13 +1855,13 @@ plot_warm_socialising_loss <- margot_plot(
   xlab = "",
   ylab = "",
   estimate_scale = 1,
-  base_size = 8,
-  text_size = 2.5,
-  point_size = .5,
-  title_size = 12,
-  subtitle_size = 11,
-  legend_text_size = 8,
-  legend_title_size = 10,
+  base_size = 20,
+  text_size = 5,
+  point_size = 1,
+  title_size = 24,
+  subtitle_size = 22,
+  legend_text_size = 16,
+  legend_title_size = 20,
   x_offset = -1,
   x_lim_lo = -1,
   x_lim_hi =  .5
@@ -1752,18 +1898,17 @@ plot_socialising_gain_help_received<- margot_plot(
   xlab = "",
   ylab = "",
   estimate_scale = 1,
-  base_size = 8,
-  text_size = 2.5,
-  point_size = .5,
-  title_size = 12,
-  subtitle_size = 11,
-  legend_text_size = 8,
-  legend_title_size = 10,
-  x_offset = 0,
-  x_lim_lo = 0,
-  x_lim_hi =  2
+  base_size = 20,
+  text_size = 5,
+  point_size = 1,
+  title_size = 24,
+  subtitle_size = 22,
+  legend_text_size = 16,
+  legend_title_size = 20,
+  x_offset = -1,
+  x_lim_lo = -1,
+  x_lim_hi =  .5
 )
-
 plot_socialising_gain_help_received
 
 ggsave(
@@ -1807,16 +1952,16 @@ plot_socialising_loss_help_received <- margot_plot(
   xlab = "",
   ylab = "",
   estimate_scale = 1,
-  base_size = 8,
-  text_size = 2.5,
-  point_size = .5,
-  title_size = 12,
-  subtitle_size = 11,
-  legend_text_size = 8,
-  legend_title_size = 10,
-  x_offset = 0,
-  x_lim_lo = 0,
-  x_lim_hi =  2
+  base_size = 20,
+  text_size = 5,
+  point_size = 1,
+  title_size = 24,
+  subtitle_size = 22,
+  legend_text_size = 16,
+  legend_title_size = 20,
+  x_offset = -1,
+  x_lim_lo = -1,
+  x_lim_hi =  .5
 )
 
 plot_socialising_loss_help_received

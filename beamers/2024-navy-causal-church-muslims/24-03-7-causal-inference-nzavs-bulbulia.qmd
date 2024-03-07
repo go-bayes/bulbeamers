@@ -42,10 +42,11 @@ loadfonts(device = "all")
 
 ##  The Fundamental Problem of Causal Inference: We Require a Counterfactual Contrast
 
-$$Y_{\text{you}}(1) - Y_{\text{you}}(0)$$  
+$$Y_{\text{you}}(1) - Y_{\text{you}}(0)$$[^1]
 
+[^1]:$Y$ denotes the outcome; $A$ denotes a treatment, $Y(a)$ denotes the outcome when $A=a$
 
-## But Individuals Experience Only **One** Exposure
+## But Individuals Experience Only **One** Treatment
 
 
 
@@ -81,7 +82,10 @@ $$
 
 $$
 Y(a) \coprod A | L \quad \text{or equivalently} \quad A \coprod Y(a) | L
-$$
+$$[^2]
+
+
+[^2]: $L$ denotes measured covariates.
 
 ### Positivity 
 
@@ -90,11 +94,11 @@ $$
 $$
 
 
-## The Common Worry: Confounding by Common Cause
+## The Typical **Worry**: Confounding by Common Cause
 
 $$\commoncauseA$$
 
-## However, There Are Other Worries: Reverse Causation
+## However, There Are Other **Worries**: Reverse Causation
 
 
 
@@ -102,36 +106,39 @@ $$\ytoa$$
 
 
 
-## Another Worry is Mediator Bias
+## Another **Worry** is Mediator Bias
 
 
 $$\mediatorA$$
 
-## Another Worry is Collider Bias
+## Another **Worry** is Collider Bias
 
 
 $$\colliderALONG$$
 
 
 
-## Another Worry: Collider Bias Proxy
+## Another **Worry** is Collider Bias Proxy
 
 
 $$\descendantBBLONG$$
 
-## Post Exposure Collider Bias
+## Yet Another **Worry** is Post Exposure Collider Bias
 
-$$\mediatorcollider$$
+$$\mediatorcollider$$[^3]
 
 
-## Another Worry: Unmeasured Common Cause
+[^3]: $U$ denotes and unmeasured confounder of $A\to Y$
+
+## Another **Worry** are Unmeasured Common Causes ($U$)
 
 
 $$\downstream$$
 
 
 
-## Reverse Causation Solution: Longitudional Hygiene
+
+## Reverse Causation Strategy: **Longitudional Hygiene**
 
 
 :::: {.columns}
@@ -146,7 +153,7 @@ $$\aandysolution$$
 
 ::::
 
-## Mediator Bias Solution: Longitudional Hygiene
+## Mediator Bias Strategy:  **Longitudional Hygiene**
 
 
 :::: {.columns}
@@ -167,7 +174,7 @@ $$
 
 
 
-## Collider Bias **Solution**: Longitudional Hygiene
+## Collider Bias Strategy: **Longitudional Hygiene**
 
 
 :::: {.columns}
@@ -183,7 +190,7 @@ $$\commoncausesolvedA$$
 ::::
 
 
-## Collider Bias Proxy **Solution**: Longitudional Hygiene
+## Collider Bias Proxy Strategy: **Longitudional Hygiene**
 
 
 :::: {.columns}
@@ -201,7 +208,7 @@ $$\commoncausesolvedchild$$
 
 
 
-## Post Exposure Collider Bias **Solution**: Longitudional Hygiene
+## Post Exposure Collider Bias Strategy:**Longitudional Hygiene**
 
 
 :::: {.columns}
@@ -221,7 +228,7 @@ $$\commoncausesolvedA$$
 
 
 
-## Unmeasured Common Cause **Solution**: Longitudional Hygiene
+## Unmeasured Common Cause Strategy:  **Longitudional Hygiene**
 
 
 :::: {.columns}
@@ -236,9 +243,9 @@ $$\commoncausesolvedA$$
 
 ::::
 
-# New Zealand Attitudes and Values Study
+# New Zealand Attitudes and Values Study (NZAVS)
 
-## The New Zealand Attitudes and Values Study: Longitudinally Hygeinic Data Collection
+## NZAVS **Longitudinally Hygienic** Data Collection
 
   - Planned 20-year longitudinal study, currently in its 14$^{th}$ year.
   
@@ -250,7 +257,7 @@ $$\commoncausesolvedA$$
     
   - Focus on personality, social attitudes, values, religion, employment, prejudice $\dots$
     
-  - Current sample contains > 72,290,000 unique people, and ~ 38,000 in the longitudinal study
+  - Current sample contains 72910 unique individuals, and ~ 38,000 in the longitudinal study
   
 ___
 
@@ -304,7 +311,7 @@ ___
 
 ___
 
-## Regulate Artificial Intelligence?
+## Regulate Gov't Surveillance vs Regulate AI
 
 ___
 
@@ -317,14 +324,15 @@ ___
 
 ___
 
-Consider Gradual Events 
+
+\Large \centering Consider Gradual Events 
 
 ___
 
 ![plot_prob_church_attendance_nz_2009to2024](plot_prob_church_attendance_nz_2009to2024.png)
 
 
-## Worked Example: Casual Effects of Religious Service on Prosociality
+## Worked Example: causal Effects of Religious Service on Prosociality
 
 ### Intervention
 $$f(A = a*) = \begin{cases} 4 & \text{if } A < 4  \text{ monthly religious service attendance} \\ \tilde{A} & \text{if } A \geq 4  \text{ monthly religious service attendance} \end{cases} $$
@@ -395,8 +403,9 @@ ___
 ## Results
 
 - Causal effects of religious service attendance on the economy are considerable, in expectation they represent ~ **0.048%** of New Zealand's 2021 annual government budget.
-- These results underscores the importance of investigating the consequences of gradual change in cultural engagement.
-- **What do you think we should be focussing on?** 
+- Notably, cross-sectional associations are four times stronger, but these associations are **uninterpretable**
+- Results underscore the importance of investigating gradual cultural change.
+
 
 ```{r}
 # #| label: calculation
@@ -441,11 +450,11 @@ ___
 
 :::{.nonincremental}
 - Chris G. Sibley (NZAVS lead Investigator)
-- TRT Grant 0418
-- Max Planck Institute for Evolutionary Anthropology
+- Templeton Religion Trust Grant 0418
+- Max Planck Institute for Evolutionary Anthropology: Department Linguistic and Cultural Evolution
 - Victoria University
 - University of Canterbury
-- 72,290 NZAVS participants
+- 72,910 NZAVS participants
 :::
 
 ___
