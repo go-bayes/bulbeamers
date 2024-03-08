@@ -1498,9 +1498,9 @@ plot_prejudice_church
 
 ggsave(
   plot_prejudice_church,
-  path = path_talk
-  width = 8,
-  height = 6,
+  path = path_talk,
+  width =16,
+  height = 9,
   units = "in",
   filename ="plot_prejudice_church.png",
   device = 'png',
@@ -1535,6 +1535,7 @@ plot_prejudice_church_loss <- margot_plot(
   x_lim_hi =  .5
 )
 
+plot_prejudice_church_loss
 ggsave(
   plot_prejudice_church_loss,
   path = here::here(here::here(push_mods, "figs")),
@@ -1597,7 +1598,7 @@ plot_church_help_received
 
 
 ggsave(
-  plot_group_tab_time_church,
+  plot_church_help_received,
   path = path_talk,
   width = 16,
   height = 9,

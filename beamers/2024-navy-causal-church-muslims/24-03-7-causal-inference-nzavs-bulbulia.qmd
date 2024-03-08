@@ -8,10 +8,13 @@ bibliography: /Users/joseph/GIT/templates/bib/references.bib
 format: 
   beamer: 
     navigation: horizontal
+    number-sections: false
+    colorlinks: true
     aspectratio: 169
     theme: CambridgeUS
     colortheme: orchid
-    incremental: false  
+    incremental: false
+    keep-tex: true  
     header-includes:
       - \input{/Users/joseph/GIT/latex/latex-for-quarto.tex}
 execute:
@@ -66,7 +69,7 @@ $$
 
 # The Three Fundemental Assumptions of Causal Inference
 
-### Causal Consistency
+## Causal Consistency
 
 $$
 Y_i^{observed}|A_i = 
@@ -78,16 +81,16 @@ $$
 
 
 
-### Conditional Exchangeabilty 
+## Conditional Exchangeabilty 
 
 $$
 Y(a) \coprod A | L \quad \text{or equivalently} \quad A \coprod Y(a) | L
 $$[^2]
 
 
-[^2]: $L$ denotes measured covariates.
+[^2]:$L$ denotes measured covariates.
 
-### Positivity 
+## Positivity 
 
 $$
 0 < Pr(A = a | L = l) < 1
@@ -128,7 +131,7 @@ $$\descendantBBLONG$$
 $$\mediatorcollider$$[^3]
 
 
-[^3]: $U$ denotes and unmeasured confounder of $A\to Y$
+[^3]:$U$ denotes and unmeasured confounder of $A\to Y$}
 
 ## Another **Worry** are Unmeasured Common Causes ($U$)
 
@@ -138,7 +141,7 @@ $$\downstream$$
 
 
 
-## Reverse Causation Strategy: **Longitudional Hygiene**
+## Reverse Causation Strategy: **Longitudinal Hygiene**
 
 
 :::: {.columns}
@@ -153,7 +156,7 @@ $$\aandysolution$$
 
 ::::
 
-## Mediator Bias Strategy:  **Longitudional Hygiene**
+## Mediator Bias Strategy:  **Longitudinal Hygiene**
 
 
 :::: {.columns}
@@ -174,7 +177,7 @@ $$
 
 
 
-## Collider Bias Strategy: **Longitudional Hygiene**
+## Collider Bias Strategy: **Longitudinal Hygiene**
 
 
 :::: {.columns}
@@ -190,7 +193,7 @@ $$\commoncausesolvedA$$
 ::::
 
 
-## Collider Bias Proxy Strategy: **Longitudional Hygiene**
+## Collider Bias Proxy Strategy: **Longitudinal Hygiene**
 
 
 :::: {.columns}
@@ -208,7 +211,7 @@ $$\commoncausesolvedchild$$
 
 
 
-## Post Exposure Collider Bias Strategy:**Longitudional Hygiene**
+## Post Exposure Collider Bias Strategy:**Longitudinal Hygiene**
 
 
 :::: {.columns}
@@ -228,7 +231,7 @@ $$\commoncausesolvedA$$
 
 
 
-## Unmeasured Common Cause Strategy:  **Longitudional Hygiene**
+## Unmeasured Common Cause Strategy:  **Longitudinal Hygiene**
 
 
 :::: {.columns}
@@ -369,7 +372,7 @@ ___
 ___
 
 
-![plot_church_prejudice](plot_church_prejudice.png)
+![plot_church_prejudice](plot_prejudice_church.png)
 
 ___
 
@@ -498,13 +501,6 @@ $$\feedbackA$$
 $$\feedbackBshort$$
 
 ## Mediation
-
-
-$$
-\tiny \mediationfull
-$$
-
-## Mediation 
 
 ## Total Effect 
 
