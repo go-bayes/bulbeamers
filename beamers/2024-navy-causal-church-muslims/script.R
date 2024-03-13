@@ -513,10 +513,6 @@ dat_ai <- nzavs_data %>%
 # dat_ai <- dat_ai %>% filter(id %in% baseline_ids)
 
 
-
-
-
-
 graph_ai_change <- dat_2018_2022 %>%
   ggplot(aes(x = wave, y = issue_regulate_ai, fill = wave)) +
   labs(title = "Attitudes to AI regulation in 2018 and 2022",
