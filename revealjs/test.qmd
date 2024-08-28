@@ -1,0 +1,73 @@
+---
+title: "Using tikz in R Markdown"
+format:
+  revealjs: 
+    slide-number: true
+    smaller: true
+    scrollable: true
+    incremental: true
+    chalkboard: false 
+    buttons: false
+    preview-links: auto
+    theme: default
+    embed-resources: false
+    code-fold: true
+    code-overflow: scroll
+    code-line-numbers: true
+    auto-stretch: true
+    html-math-method: katex
+    progress: true
+    bibliography: /Users/joseph/GIT/templates/bib/references.bib
+extra_dependencies:
+  - tikz-cd
+---
+
+
+```{r include=FALSE}
+# Necessary for using dvisvgm on macOS
+Sys.setenv(LIBGS = "/usr/local/share/ghostscript/9.53.3/lib/libgs.dylib.9.53")
+font_opts <- list(dvisvgm.opts = "--font-format=woff")
+```
+
+
+## Three Wave Panel
+
+```{tikz engine.opts=font_opts}
+\begin{tikzpicture}[scale=2.0, transform shape]
+\node [draw = none, inner sep = 0] (U) at (0, 0) {$U$};
+\node [rectangle, draw=black,align=left] (L) at (2, 0) {\footnotesize $L_{0}$\\\footnotesize
+$A_{0}$\\ \footnotesize $Y_{0}$};
+\node [draw = none, inner sep = 0] (A) at (4, 0) {$A_1$};
+\node [draw = none, inner sep = 0] (Y) at (6,0) {$Y_2$};
+\draw [-latex] (U) -- (L);
+\draw [-latex, bend left=80, dotted] (U) to  node[pos=0.55, above] {\tiny orthogonal confounding}(A);
+\draw [-latex, bend right=80, dotted] (U) to node[pos=0.45, below] {\tiny orthogonal confounding} (Y);
+\draw [-latex] (L) -- (A);
+\draw [-latex,bend left=20] (L) to (Y);
+\end{tikzpicture}
+```
+
+
+This will a dag.
+
+## Test
+
+::: {#tbl-elementary-chronological-hyg}
+```{=latex}
+\terminologychronologicalhygeine
+```
+Causal DAGs illustrate how ensuring the relative timing of the occurrence of variables of interest addresses common forms of bias when estimating causal effects.
+:::
+
+## Explanation
+
+1. In the YAML header, we add `tikz-cd` to the `extra_dependencies` list. This tells R Markdown to include the tikz-cd package when compiling the document.
+
+2. We use a LaTeX code chunk (```{=latex}) to insert raw LaTeX code into our R Markdown document.
+
+3. Inside this chunk, we use the tikz-cd syntax to create our diagram.
+
+## Note
+
+
+
